@@ -7,7 +7,8 @@ class HomeController {
         if(User.count().equals(0)){
             redirect(action: 'setupUser')
         } else {
-
+            def users = User.List()
+            [users: users]
         }
 
     }
