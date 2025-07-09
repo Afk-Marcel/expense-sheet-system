@@ -11,7 +11,6 @@ class HomeController {
             def users = User.List()
             [users: users]
         }
-
     }
 
     def setupUser() {
