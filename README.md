@@ -30,7 +30,7 @@ A Grails-based expense tracking system that allows users to track expenses with 
 1. Clone the repository:
 
 ```bash
-git clone [YOUR_REPO_URL]
+git clone https://github.com/Afk-Marcel/expense-sheet-system.git
 cd expense-sheet-systems
 ```
 
