@@ -1,4 +1,4 @@
-package expense.sheet.system
+package expense.sheet.systems
 
 import grails.boot.GrailsApp
 import grails.boot.config.GrailsAutoConfiguration

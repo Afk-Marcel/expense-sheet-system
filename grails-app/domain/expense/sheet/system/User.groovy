@@ -1,6 +1,7 @@
 package expense.sheet.system
 
 class User {
+    // User variables
     String name
     BigDecimal startingBalance
     BigDecimal currentBalance
@@ -13,10 +14,12 @@ class User {
     }
 
     static mapping = {
+        // Avoid SQL reserved word "user"
         table 'app_user'
     }
 
+    // Display format for user objects - shows key financial info
     String toString() {
-        return "User: ${name}\n Balance: R${startingBalance}\n Available: R${currentBalance}\n Date: ${dateCreated}"
+        return "User: ${name}, Balance: R${startingBalance}, Available: R${currentBalance}, Date: ${dateCreated}"
     }
 }

@@ -23,7 +23,7 @@ plugins {
 apply plugin: "org.grails.grails-web"
 apply plugin: "org.grails.grails-gsp"
 
-group = "expense.sheet.system"
+group = "expense.sheet.systems"
 
 repositories {
     mavenCentral()
@@ -54,7 +54,6 @@ dependencies {
     implementation "org.grails.plugins:gsp"
     implementation "org.grails.plugins:hibernate5"
     implementation "org.grails.plugins:scaffolding"
-    implementation 'org.grails.plugins:rest-client-builder'
     implementation "org.springframework.boot:spring-boot-autoconfigure"
     implementation "org.springframework.boot:spring-boot-starter"
     implementation "org.springframework.boot:spring-boot-starter-actuator"
@@ -81,7 +80,7 @@ dependencies {
 }
 
 application {
-    mainClass = "expense.sheet.system.Application"
+    mainClass = "expense.sheet.systems.Application"
 }
 
 java {

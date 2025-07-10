@@ -1,34 +1,38 @@
 package expense.sheet.system
 
-
 class HomeController {
-    def userCount = User.count()
+
+    UserService userService
 
     def index() {
-        if(userCount == 0) {
+        // Check if any users exist using service
+        if (!userService.hasUsers()) {
             redirect(action: 'setupUser')
         } else {
-            def users = User.List()
+            // Get all users using service
+            def users = userService.getAllUsers()
             [users: users]
         }
     }
 
     def setupUser() {
-        [message: "Welcome! Let's set up your account."]
+        // Display the user setup form
     }
 
     def createUser() {
-        def name = params.name
+        // Get form parameters
+        def name = params.name as String
         def startingBalance = params.startingBalance as BigDecimal
-        def user = new User()
-        user.name = name
-        user.startingBalance = startingBalance
-        user.currentBalance = startingBalance
 
-        if (user.save(flush: true)) {
+        // Use service to create user
+        def user = userService.createUser(name, startingBalance)
+
+        if (user) {
+            // User created successfully
             flash.message = "Welcome ${user.name}! Your account is ready."
             redirect(action: 'index')
         } else {
+            // User creation failed
             flash.error = "Please fix the errors and try again."
             redirect(action: 'setupUser')
         }
