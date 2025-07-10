@@ -113,46 +113,10 @@ When scaling to 10,000 concurrent users, the following optimizations would be es
 
 ### Architecture Overview
 
-┌─────────────────────────────────────────────────────────┐
-│ PRESENTATION LAYER │
-│ ┌─────────────┬─────────────┬───────────────────────┐ │
-│ │HomeController│UserController│TransactionController │ │
-│ └─────────────┴─────────────┴───────────────────────┘ │
-└─────────────────────────────────────────────────────────┘
-│
-▼
-┌─────────────────────────────────────────────────────────┐
-│ SERVICE LAYER │
-│ ┌─────────────┬─────────────┬─────────────────────────┐ │
-│ │ UserService │TransactionSvc│ CurrencyService │ │
-│ └─────────────┴─────────────┴─────────────────────────┘ │
-└─────────────────────────────────────────────────────────┘
-│
-▼
-┌─────────────────────────────────────────────────────────┐
-│ DOMAIN LAYER │
-│ ┌─────────────────────┬─────────────────────────────┐ │
-│ │ User Domain │ Transaction Domain │ │
-│ │ - name │ - amount │ │
-│ │ - startingBalance │ - description │ │
-│ │ - currentBalance │ - runningBalance │ │
-│ │ - dateCreated │ - dateCreated │ │
-│ │ │ - usdAmount (transient) │ │
-│ └─────────────────────┴─────────────────────────────┘ │
-└─────────────────────────────────────────────────────────┘
-│
-▼
-┌─────────────────────────────────────────────────────────┐
-│ DATA ACCESS LAYER │
-│ GORM + H2 │
-└─────────────────────────────────────────────────────────┘
-│
-▼
-┌─────────────────────────┐
-│ EXTERNAL SERVICES │
-│ fixer.io API │
-│ Currency Conversion │
-└─────────────────────────┘
+- Domain Layer: User, Transaction (GORM entities)
+- Service Layer: UserService, TransactionService, CurrencyService
+- Controller Layer: HomeController, UserController, TransactionController
+- External Integration: fixer.io API for currency conversion
 
 ### Testing Strategy
 
